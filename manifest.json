@@ -1,0 +1,21 @@
+{
+    "name": "Instructions Only",
+    "manifest_version": 3,
+    "version": "1.0",
+    "description": "copies all text on website",
+    "author": "Kristian and Iain",
+    "content_scripts": [
+        {
+            "matches": ["*://*/*"],
+            "all_frames": true,
+            "js": ["content_script.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "permissions": [
+        "activeTab"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    }
+}

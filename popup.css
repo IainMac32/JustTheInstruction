@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+  }
+
+  .popup-content {
+    width: 350px;
+    height: 400px;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  #circle-button {
+    margin-left: 100px;
+    margin-top: 60px;
+    width: 150px;
+    height: 150px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 3px 4px black; /* 10px black outline /
+    color: white; / Text color /*/
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #circle-button:hover {
+    transition: width 0.5s ease, height 0.5s ease, margin-left 0.5s ease, margin-top 0.5s ease, font-size 0.5s ease;
+    outline: none;
+    width: 170px;
+    height: 170px;
+    margin-left: 90px;
+    margin-top: 50px;
+    font-size: 25px;
+  }
