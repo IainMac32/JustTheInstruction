@@ -3,7 +3,7 @@ let puretext = "";
 
 for (let i = 0; i < text.length; i++) {
     console.log(text[i].textContent);
-    puretext += text[i].textContent;  // Concatenate the text content to puretext
+    puretext += text[i].textContent + " ";  // Adding a space between elements for readability
 }
 
 // Send puretext to Python script
@@ -14,6 +14,6 @@ fetch('http://localhost:5000/receive_text', {
     },
     body: JSON.stringify({ text: puretext })
 })
-.then(response => response.text())
-.then(data => console.log(data))
+.then(response => response.json())
+.then(data => console.log('Success:', data))
 .catch(error => console.error('Error:', error));
