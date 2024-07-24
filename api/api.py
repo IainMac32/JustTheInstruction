@@ -8,7 +8,7 @@ from isolate import isolate
 
 import zipfile
 
-storage_client = storage.Client.from_service_account_json("./api/credentials.json")
+storage_client = storage.Client.from_service_account_json("./credentials.json")
 bucket_name = 'just-the-instructions_model'
 
 model_filename = 'Model2.zip'
@@ -60,8 +60,9 @@ def receive_text():
     try:
         data = request.get_json()
         puretext = data.get('text', '')
-        print(puretext)  # Print puretext to the console
-        return jsonify({"status": "success", "text_received": puretext}), 200
+        res = isolate(puretext, model)
+        print(res)
+        return jsonify({"status": "success", "text_received": res}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
