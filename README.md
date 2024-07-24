@@ -34,23 +34,18 @@
     <img src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white" alt="TensorFlow" />
     <img src="https://img.shields.io/badge/Flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" />
   </p>
-
-  <div class="title">Other Technologies/Libraries</div>
-  <div>
-    <div>Data Processing:</div>
-    <p>
-      <img src="https://img.shields.io/badge/Pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
-      <img src="https://img.shields.io/badge/NumPy-013243.svg?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy" />
-      <img src="https://img.shields.io/badge/BeautifulSoup-3776AB.svg?style=for-the-badge&logo=beautifulsoup&logoColor=white" alt="Beautiful Soup" />
-    </p>
-
-    <div>Hosting & Deployment Tools:</div>
-    <p>
-      <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
-      <img src="https://img.shields.io/badge/Google%20Cloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white" alt="Google Cloud" />
-      <img src="https://img.shields.io/badge/Google%20Cloud%20Run-4285F4.svg?style=for-the-badge&logo=googlecloudrun&logoColor=white" alt="Google Cloud Run" />
-    </p>
-  </div>
+  <div>Data Processing:</div>
+  <p>
+    <img src="https://img.shields.io/badge/Pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
+    <img src="https://img.shields.io/badge/NumPy-013243.svg?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy" />
+    <img src="https://img.shields.io/badge/BeautifulSoup-3776AB.svg?style=for-the-badge&logo=beautifulsoup&logoColor=white" alt="Beautiful Soup" />
+  </p>
+  <div>Hosting & Deployment Tools:</div>
+  <p>
+    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+    <img src="https://img.shields.io/badge/Google%20Cloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white" alt="Google Cloud" />
+    <img src="https://img.shields.io/badge/Google%20Cloud%20Run-4285F4.svg?style=for-the-badge&logo=googlecloudrun&logoColor=white" alt="Google Cloud Run" />
+  </p>
 </div>
 
 
