@@ -48,12 +48,12 @@
 *Note: We built and trained our model on google colab!*
 
 We decided to build an LSTM neural network using TensorFlow. The model performs binary text classification and is able to predict if text is "instructions" or is "not instructions". Click the following link to see the documented process. 
-### https://colab.research.google.com/drive/1nkqleu9FP2pN5D40q1NK_xuyOvsKG7vy?usp=sharing
+**https://colab.research.google.com/drive/1nkqleu9FP2pN5D40q1NK_xuyOvsKG7vy?usp=sharing**
 
 We used a variety of sources to collect training data for our model. Categories of sites we wanted the model to be able to determine include recipes, crafts, circuits, and other DIYs.
 
-While many entries were collected from a public Kaggle dataset, we also did our own data scraping using the python library, **Beautiful Soup**. We were able to scrape ***over 1000*** unique entries for each of the mentioned categories! To learn more about how we did this, click the link to view our google colab file that documents the data scraping process. 
-### https://colab.research.google.com/drive/1k1D4zRW0nFicjkS-KqtCVW3y4mn8qSJR?usp=sharing
+While many entries were collected from a public Kaggle dataset, we also did our own data scraping using the python library, **Beautiful Soup**. We were able to scrape ***over 1000*** unique entries for each of the mentioned categories! To learn more about how we did this, click the link to view our google colab file that documents the data scraping process.
+**https://colab.research.google.com/drive/1k1D4zRW0nFicjkS-KqtCVW3y4mn8qSJR?usp=sharing**
 
 
 ## Using the Model
