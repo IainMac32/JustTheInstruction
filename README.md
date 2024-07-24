@@ -25,8 +25,6 @@
     <img src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white" alt="TensorFlow" />
     <img src="https://img.shields.io/badge/Flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" />
   </p>
-  <div style="font-size: 2em; font-weight: bold; text-decoration: underline; margin: 20px 0 10px 0;">Other Technologies/Libraries</div>
-  <div>
     <div style="font-size: 1.5em; font-weight: bold;">Data Processing:</div>
     <p>
       <img src="https://img.shields.io/badge/Pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
@@ -45,11 +43,20 @@
 
 
 
-## Training the Model
-### https://colab.research.google.com/drive/1k1D4zRW0nFicjkS-KqtCVW3y4mn8qSJR?usp=sharing
-We used a variety of sources to collect training data for our model. Ultimately, we were able to gain entries for many categories of instructions including recipes, crafts, circuits, and other DIYs!
+## Model Architecture & Training the Model
 
-While many entries were collected from a public Kaggle dataset, we also did our own data scraping using the python library, Beautiful Soup. To learn more about how we did this, click the link to view our google colab file that documents the data scraping process. 
+*Note: We built and trained our model on google colab!*
+
+We decided to build an LSTM neural network using TensorFlow. The model performs binary text classification and is able to predict if text is "instructions" or is "not instructions". Click the following link to see the documented process. 
+### https://colab.research.google.com/drive/1nkqleu9FP2pN5D40q1NK_xuyOvsKG7vy?usp=sharing
+
+
+We used a variety of sources to collect training data for our model. Categories of sites we wanted the model to be able to determine include recipes, crafts, circuits, and other DIYs.
+
+While many entries were collected from a public Kaggle dataset, we also did our own data scraping using the python library, `Beautiful Soup`. We were able to scrape **over 1000** unique entries for each of the mentioned categories! To learn more about how we did this, click the link to view our google colab file that documents the data scraping process. 
+
+### https://colab.research.google.com/drive/1k1D4zRW0nFicjkS-KqtCVW3y4mn8qSJR?usp=sharing
+
 
 ## Using the Model
 ### You can find the isolate function in the [isolate.py](./api/isolate.py) file located in the `api` directory.
