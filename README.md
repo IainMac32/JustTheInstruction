@@ -6,6 +6,9 @@ Isn't it the worst when you find a recipe online, but need to scroll down for wh
 
 Well, we built and trained an AI model to do just that, and the power of this tool is one click away thanks to our Google Chrome Extension!
 
+## ![Chrome Extension Logo](https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_(September_2014).svg) Chrome Extension
+
+
 ### Project Objectives
 1. Build a binary text classification model using TensorFlow.
 2. Scrape training data that covers a variety of instruction categories.
