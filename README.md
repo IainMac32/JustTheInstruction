@@ -16,7 +16,7 @@ Well, we built and trained an AI model to do just that, and the power of this to
 <div style="text-align: center;">
   <div style="font-size: 2em; font-weight: bold; text-decoration: underline; margin-bottom: 10px;">Frontend Framework</div>
   <div style="font-size: 2em; font-weight: bold; text-decoration: underline; margin-bottom: 10px;">Backend Framework:</div>
-  <p style="display: flex; justify-content: center;">
+  <p style="display: flex; justify-content: center; align: center;">
     <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python" />
     <img src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white" alt="TensorFlow" />
     <img src="https://img.shields.io/badge/Flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" />
