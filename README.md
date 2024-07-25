@@ -9,13 +9,13 @@ Well, we built and trained an AI model to do just that, and the power of this to
 ### Project Objectives
 1. Build a binary text classification model using TensorFlow.
 2. Scrape training data that covers a variety of instruction categories.
-3. Develop a Google Chrome extension that reads an entire website and efficiently provides the user with ***JustTheInstructions***
+3. Develop a Google Chrome extension that automatically reads an entire website and promptly provides the user with ***JustTheInstructions***.
 
-## Tech Stack
+## :computer: Tech Stack
 
 <div style="text-align: center;">
   <div style="font-size: 2em; font-weight: bold; text-decoration: underline; margin-bottom: 10px;">Frontend Framework</div>
-  <div style="font-size: 2em; font-weight: bold; text-decoration: underline; margin-bottom: 10px;">Backend Framework</div>
+  <div style="font-size: 2em; font-weight: bold; text-decoration: underline; margin-bottom: 10px;">Backend Framework:</div>
   <p>
     <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python" />
     <img src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white" alt="TensorFlow" />
@@ -39,7 +39,7 @@ Well, we built and trained an AI model to do just that, and the power of this to
 
 
 
-## Model Architecture & Training the Model
+## :wrench: Model Architecture & Training the Model
 
 *Note: We built and trained our model on google colab!*
 
@@ -52,7 +52,7 @@ While many entries were collected from a public Kaggle dataset, we also did our 
 **https://colab.research.google.com/drive/1k1D4zRW0nFicjkS-KqtCVW3y4mn8qSJR?usp=sharing**
 
 
-## Using the Model
+## :mag: Using the Model
 ### You can find the isolate function in the [isolate.py](./api/isolate.py) file located in the `api` directory.
 
-Given plaintext, we use the model to idetify only the section of the text that includes procedural writing (instructions), and isolate it from the surrounding irrelevant text. This was done by parsing the text into individual sentences. We then parsed through the individual sentences until the model predicted a value greater than our experimentally determined threshold value which markes the start of the instructions section. The isolate function then continues to append sentences to the section and have the model make a prediction. When a significant decrease in prediction was noticed (identified by the prediction of the previous section minus an experimentally determined buffer value), this marks the end of the instructions section. This section, consisting of ***JustTheInstructions***, is then returned to the user. 
+Given plaintext, we use the model to idetify only the section of the text that includes procedural writing (instructions), and isolate it from the surrounding irrelevant text. This was done by first splitting the website's plaintext into individual sentences. We then parsed through the individual sentences until the model predicted a value greater than our experimentally determined threshold value which markes the start of the instructions section. The isolate function then continues to append sentences to the section and have the model make a prediction. When a significant decrease in prediction was noticed (identified by the prediction of the previous section minus an experimentally determined buffer value), this marks the end of the instructions section. This section, consisting of ***JustTheInstructions***, is then returned to the user. 
