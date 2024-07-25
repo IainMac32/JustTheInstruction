@@ -21,11 +21,11 @@ def isolate(text, model):
     else:
       i+=1
 
-  # STEP 2: check that we actually found something
+  # check that we actually found something
   if res == "":
     return "NO INSTRUCTIONS WERE FOUND"
 
-  # STEP 3: go through the remaining sentences until the confidence decreases
+  # STEP 2: go through the remaining sentences until the confidence decreases
   for j in range(i, len(sentences)):
     current = res + sentences[j]
     entry = np.array([current])
