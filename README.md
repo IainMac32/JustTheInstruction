@@ -4,10 +4,7 @@
 
 Isn't it the worst when you find a recipe online, but need to scroll down for what feels like hours to find the actual instructions? We too have been bothered by this issue and began to think of a solution. What if we could use AI to extract ***JustTheInstructions*** from any recipe, arts & crafts, or other DIY website?
 
-Well, we built and trained an AI model to do just that, and the power of this tool is one click away thanks to our Google Chrome Extension!
-
-## ![Chrome Extension Logo](https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_(September_2014).svg) Chrome Extension
-
+Well, we built and trained an AI model to do just that, and the power of this tool is one click away thanks to our Google Chrome Extension!s
 
 ### Project Objectives
 1. Build a binary text classification model using TensorFlow.
