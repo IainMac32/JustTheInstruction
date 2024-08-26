@@ -43,3 +43,47 @@ body {
     margin-top: 50px;
     font-size: 25px;
   }
+
+
+  #text-screen {
+    width: 650px;
+    height: 500px;
+    padding: 20px;         /* Add padding for inner spacing */
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 10px;   /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(43, 167, 43, 0.911); /* Subtle shadow for depth */
+    overflow-y: auto;      /* Enable scrolling if text overflows */
+    margin-top: 20px;      /* Add some margin on top for spacing */
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+
+#received-text {
+  font-size: 18px;       /* Adjust font size */
+  color: #000000;           /* Dark text color */
+  line-height: 1.5;      /* Improve readability with line height */
+}
+
+
+#back-button {
+  background-color: #4CAF50; /* Green background */
+  border: none;              /* Remove borders */
+  color: white;              /* White text */
+  padding: 10px 20px;        /* Add some padding */
+  text-align: center;        /* Center the text */
+  text-decoration: none;     /* Remove underline */
+  display: inline-block;     /* Make the button inline-block */
+  font-size: 18px;           /* Increase font size */
+  margin-top: 20px;          /* Add some space on top */
+  margin-bottom: 20px;
+  border-radius: 5px;        /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+
+#back-button:hover {
+  background-color: #2c662f; /* Darker green on hover */
+  cursor: pointer;           /* Change cursor to pointer */
+}

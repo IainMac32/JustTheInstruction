@@ -1,8 +1,8 @@
 {
-    "name": "Instructions Only",
+    "name": "Just The Instructions",
     "manifest_version": 3,
     "version": "1.0",
-    "description": "copies all text on website",
+    "description": "Filters recipe websites to just show the instructions",
     "author": "Kristian and Iain",
     "content_scripts": [
         {
