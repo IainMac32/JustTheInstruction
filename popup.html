@@ -1,3 +1,4 @@
+<!-- popup.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,21 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <div class="popup-content">
+  <!-- First Screen: Button Screen -->
+  <div id="button-screen" class="popup-content">
     <h1>Instructions Only</h1>
     <button id="circle-button">Click Here</button>
   </div>
+
+
+  <!-- Second Screen: Display Text Screen -->
+  <div id="text-screen" class="popup-content" style="display: none;">
+    <h1>The Instructions</h1>
+    <p id="received-text"></p>
+    <button id="back-button">Go Back</button>
+  </div>
+
+
   <script src="popup.js"></script>
 </body>
 </html>
