@@ -4,6 +4,11 @@
     "version": "1.0",
     "description": "Filters recipe websites to just show the instructions",
     "author": "Kristian and Iain",
+    "icons": {
+        "16": "images/cookie.png",
+        "48": "images/cookie.png",
+        "128": "images/cookie.png"
+    },
     "content_scripts": [
         {
             "matches": ["*://*/*"],
@@ -16,6 +21,8 @@
         "activeTab"
     ],
     "action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": "images/cookie.png"
+
     }
 }
