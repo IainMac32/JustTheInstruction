@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 
         // Send puretext to Python script
-        fetch('http://localhost:5000/receive_text', {
+        fetch('https://api-update-v2-3gu632umxq-uc.a.run.app/receive_text', { // api endpoint updated
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

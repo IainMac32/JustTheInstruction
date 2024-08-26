@@ -64,4 +64,14 @@ It is essential to use a nonstick pan when making an omelette, as eggs like to s
 STEP-BY-STEP INSTRUCTIONS
 In a medium bowl, combine the eggs with the water, a generous pinch of salt, and a few grinds of pepper. (Pro tip: Adding a bit of water makes a fluffier omelette.)Using a fork, beat vigorously until well combined and there are no visible egg whites. In a 8-inch nonstick skillet over medium-low heat, melt the butter and swirl to coat the whole surface of the pan. Add the eggs and let cook, undisturbed, until the eggs start to set around the edges. Once the eggs start to set, use a rubber spatula to move the cooked egg away from the edges, letting the raw egg run to the outside of the pan."""
 
+text2 = """
+STEP-BY-STEP INSTRUCTIONS
+In a medium bowl, combine the eggs with the water, a generous pinch of salt, and a few grinds of pepper. (Pro tip: Adding a bit of water makes a fluffier omelette.)Using a fork, beat vigorously until well combined and there are no visible egg whites. In a 8-inch nonstick skillet over medium-low heat, melt the butter and swirl to coat the whole surface of the pan. Add the eggs and let cook, undisturbed, until the eggs start to set around the edges. Once the eggs start to set, use a rubber spatula to move the cooked egg away from the edges, letting the raw egg run to the outside of the pan.
+An American omelette is fully cooked with a golden crust and fluffy texture – and, no surprise, much easier to make. The eggs are briefly scrambled in the pan and then left to set and develop a lightly golden crust. The omelet is then filled with cheese, meat, or vegetables and folded in half or thirds.
+This is an American-style omelette (read: easy), but with a little French flair thanks to the creamy texture, good cheese, fresh herbs, and optional last-minute butter gloss. I keep it simple with just cheese, but feel free to add 1/4 cup of your favorite fillings; diced ham, bacon, breakfast sausage, smoked salmon, avocado, tomatoes, and cooked vegetables (like ratatouille) are all great options.
+The Omelette Pan
+It is essential to use a nonstick pan when making an omelette, as eggs like to stick. The size of the pan is also important, as it determines how thick or thin the base of your omelette will be. If the pan is too large, the eggs will spread too thin and dry out. For best results, use an 8-inch nonstick skillet (skillets are measured across the top) with sloping sides to make it easier to slide the omelette out of the skillet and onto a plate.
+"""
+print("&&&&&&&&&&&&&&&&&&")
 print(isolate(text, model))
+print("&&&&&&&&&&&&&&&&")
