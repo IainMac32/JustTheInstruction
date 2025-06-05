@@ -23,16 +23,16 @@ async function animateExtension(tabId, url) {
       title: "Instructions Available!",
       message: "Click here to extract instructions",
       priority: 2,
-      requireInteraction: false,
+      requireInteraction: true,
       silent: false,
       buttons: [],
       isClickable: true,
     });
 
     // Auto-dismiss notification after 5 seconds
-    setTimeout(() => {
-      chrome.notifications.clear("instruction-notification");
-    }, 5000);
+    // setTimeout(() => {
+    //   chrome.notifications.clear("instruction-notification");
+    // }, 5000);
   } catch (error) {
     console.error("Error:", error);
   } finally {

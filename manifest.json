@@ -14,12 +14,13 @@
       "matches": ["*://*/*"],
       "all_frames": true,
       "js": ["content_script.js"],
-      "run_at": "document_end"
+      "run_at": "document_end",
+      "type": "module"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["dist/styles.css"],
+      "resources": ["dist/styles.css", "model.onnx", "modelService.js"],
       "matches": ["<all_urls>"]
     }
   ],
