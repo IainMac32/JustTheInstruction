@@ -1,28 +1,44 @@
 {
-    "name": "Just The Instructions",
-    "manifest_version": 3,
-    "version": "1.0",
-    "description": "Filters recipe websites to just show the instructions",
-    "author": "Kristian and Iain",
-    "icons": {
-        "16": "images/cookie.png",
-        "48": "images/cookie.png",
-        "128": "images/cookie.png"
-    },
-    "content_scripts": [
-        {
-            "matches": ["*://*/*"],
-            "all_frames": true,
-            "js": ["content_script.js"],
-            "run_at": "document_end"
-        }
-    ],
-    "permissions": [
-        "activeTab"
-    ],
-    "action": {
-        "default_popup": "popup.html",
-        "default_icon": "images/cookie.png"
-
+  "name": "Just The Instructions",
+  "manifest_version": 3,
+  "version": "1.0",
+  "description": "Filters recipe websites to just show the instructions",
+  "author": "Kristian and Iain",
+  "icons": {
+    "16": "images/cookie.png",
+    "48": "images/cookie.png",
+    "128": "images/cookie.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "all_frames": true,
+      "js": ["content_script.js"],
+      "run_at": "document_end"
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["dist/styles.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "notifications",
+    "system.display",
+    "windows"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "action": {
+    "default_icon": "images/cookie.png"
+  }
 }

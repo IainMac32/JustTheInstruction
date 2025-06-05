@@ -1,30 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instructions Only</title>
-  <link rel="stylesheet" href="popup.css">
-</head>
-<body>
-  <!-- First Screen: Button Screen -->
-  <div id="button-screen" class="popup-content">
-    <h1>Instructions Only</h1>
-    <button id="circle-button">Click Here</button>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructions Only</title>
+    <link rel="stylesheet" href="dist/styles.css" />
+    <link rel="stylesheet" href="popup.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="preload"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="min-w-[500px] min-h-[300px] p-1">
+      <div
+        class="w-full h-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200"
+      >
+        <!-- First Screen: Button Screen -->
+        <div id="button-screen" class="p-6">
+          <h1 class="text-2xl tracking-tight font-semibold text-gray-900 mb-6">
+            Instructions Only
+          </h1>
+          <button
+            id="circle-button"
+            class="w-full py-2.5 px-4 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 flex items-center justify-center gap-2 transition-all duration-200"
+          >
+            <span>Extract Instructions</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 transform transition-transform group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        </div>
 
-  <!-- Loading Screen -->
-  <div id="loading-screen" class="popup-content" style="display: none;">
-    <h1>Loading...</h1>
-  </div>
+        <!-- Loading Screen -->
+        <div
+          id="loading-screen"
+          class="hidden flex flex-col items-center justify-center p-6 space-y-4"
+        >
+          <div class="relative w-6 h-6 animate-spin">
+            <div
+              class="w-full h-full border-2 border-gray-200 rounded-full"
+            ></div>
+            <div
+              class="absolute top-0 left-0 w-full h-full border-2 border-black rounded-full border-t-transparent"
+            ></div>
+          </div>
+          <p class="text-sm text-gray-600 font-medium">Processing...</p>
+        </div>
 
-  <!-- Second Screen: Display Text Screen -->
-  <div id="text-screen" class="popup-content" style="display: none;">
-    <h1>The Instructions</h1>
-    <p id="received-text"></p>
-    <button id="back-button">Go Back</button>
-  </div>
+        <!-- Second Screen: Display Text Screen -->
+        <div id="text-screen" class="hidden flex flex-col p-6 space-y-4">
+          <h1 class="text-2xl tracking-tight font-semibold text-gray-900 mb-4">
+            The Instructions
+          </h1>
+          <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+            <p
+              id="received-text"
+              class="text-gray-600 text-sm leading-relaxed"
+            ></p>
+          </div>
+          <button
+            id="back-button"
+            class="w-full py-2.5 px-4 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 flex items-center justify-center gap-2 transition-all duration-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+            <span>Go Back</span>
+          </button>
+        </div>
+      </div>
+    </div>
 
-  <script src="popup.js"></script>
-</body>
+    <script src="popup.js"></script>
+  </body>
 </html>
