@@ -1,12 +1,27 @@
 // Animation state
 let isAnimating = false;
 
+// Function to get text from content script
+async function getPageText(tabId) {
+  try {
+    const response = await chrome.tabs.sendMessage(tabId, {
+      action: "getPageText",
+    });
+    console.log("[Background] Got text response:", response ? "yes" : "no");
+    return response;
+  } catch (error) {
+    console.error("[Background] Error getting page text:", error);
+    return null;
+  }
+}
+
 // Function to trigger the content script
 async function triggerContentScript(tabId) {
   try {
+    console.log("[Background] Triggering content script for tab:", tabId);
     await chrome.tabs.sendMessage(tabId, { action: "copyText" });
   } catch (error) {
-    console.error("Error triggering content script:", error);
+    console.error("[Background] Error triggering content script:", error);
   }
 }
 
@@ -14,14 +29,15 @@ async function triggerContentScript(tabId) {
 async function animateExtension(tabId, url) {
   if (isAnimating) return;
   isAnimating = true;
+  console.log("[Background] Starting animation for tab:", tabId);
 
   try {
-    // Set badge and color for pinned extension
+    // Create notification
     await chrome.notifications.create("instruction-notification", {
       type: "basic",
-      iconUrl: "images/cookie.png",
+      iconUrl: chrome.runtime.getURL("images/cookie.png"),
       title: "Instructions Available!",
-      message: "Click here to extract instructions",
+      message: "Click to analyze this page",
       priority: 2,
       requireInteraction: true,
       silent: false,
@@ -36,6 +52,7 @@ async function animateExtension(tabId, url) {
   } catch (error) {
     console.error("Error:", error);
   } finally {
+    console.log("[Background] Animation complete for tab:", tabId);
     isAnimating = false;
   }
 }
@@ -63,6 +80,8 @@ chrome.action.onClicked.addListener(async (tab) => {
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   // Check if the page has finished loading and it's a http/https URL
   if (changeInfo.status === "complete" && tab.url?.startsWith("http")) {
+    console.log("[Background] Tab updated:", tabId);
+    console.log("[Background] URL:", tab.url);
     animateExtension(tabId, tab.url);
   }
 });

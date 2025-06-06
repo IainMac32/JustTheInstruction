@@ -13,14 +13,22 @@
     {
       "matches": ["*://*/*"],
       "all_frames": true,
-      "js": ["content_script.js"],
-      "run_at": "document_end",
-      "type": "module"
+      "js": ["ort-backend/ort.wasm.min.js", "content_script.js"],
+      "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["dist/styles.css", "model.onnx", "modelService.js"],
+      "resources": [
+        "model.onnx",
+        "dist/styles.css",
+        "vocab.json",
+        "ort-backend/*",
+        "ort-backend/ort.wasm.min.js",
+        "ort-backend/ort-wasm.wasm",
+        "ort-backend/ort-wasm-simd.wasm",
+        "ort-backend/ort-wasm-simd.jsep.wasm"
+      ],
       "matches": ["<all_urls>"]
     }
   ],
@@ -28,16 +36,13 @@
     "service_worker": "background.js",
     "type": "module"
   },
-  "permissions": [
-    "activeTab",
-    "tabs",
-    "notifications",
-    "system.display",
-    "windows"
-  ],
+  "externally_connectable": {
+    "matches": ["<all_urls>"]
+  },
+  "permissions": ["activeTab", "tabs", "notifications"],
   "host_permissions": ["<all_urls>"],
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
+    "extension_pages": "script-src 'self'; object-src 'self';"
   },
   "action": {
     "default_icon": "images/cookie.png"
