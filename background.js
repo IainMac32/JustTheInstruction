@@ -39,16 +39,16 @@ async function animateExtension(tabId, url) {
       title: "Instructions Available!",
       message: "Click to analyze this page",
       priority: 2,
-      requireInteraction: true,
+      requireInteraction: false,
       silent: false,
       buttons: [],
       isClickable: true,
     });
 
-    // Auto-dismiss notification after 5 seconds
-    // setTimeout(() => {
-    //   chrome.notifications.clear("instruction-notification");
-    // }, 5000);
+    //Auto-dismiss notification after 5 seconds
+    setTimeout(() => {
+      chrome.notifications.clear("instruction-notification");
+    }, 5000);
   } catch (error) {
     console.error("Error:", error);
   } finally {
@@ -65,7 +65,7 @@ chrome.notifications.onClicked.addListener(async (notificationId) => {
       currentWindow: true,
     });
     if (tab) {
-      await triggerContentScript(tab.id);
+      await chrome.tabs.sendMessage(tab.id, { action: "toggleFloatingUI" });
     }
     chrome.notifications.clear(notificationId);
   }
@@ -73,15 +73,31 @@ chrome.notifications.onClicked.addListener(async (notificationId) => {
 
 // Listen for extension icon clicks
 chrome.action.onClicked.addListener(async (tab) => {
-  await triggerContentScript(tab.id);
+  await chrome.tabs.sendMessage(tab.id, { action: "toggleFloatingUI" });
 });
 
 // Listen for tab updates
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   // Check if the page has finished loading and it's a http/https URL
   if (changeInfo.status === "complete" && tab.url?.startsWith("http")) {
     console.log("[Background] Tab updated:", tabId);
     console.log("[Background] URL:", tab.url);
-    animateExtension(tabId, tab.url);
+    // Trigger content script to copy text
+    await chrome.tabs.sendMessage(tabId, { action: "extractInstructions" });
+  }
+});
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "instructionAnalysis") {
+    console.log("[Background] Received instruction tier:", message.tier);
+
+    // Only show notification if moderate or strong instructions found
+    if (["moderate", "strong"].includes(message.tier)) {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (tabs[0]) {
+          animateExtension(tabs[0].id, tabs[0].url);
+        }
+      });
+    }
   }
 });
