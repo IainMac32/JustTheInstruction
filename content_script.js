@@ -11,15 +11,16 @@ async function loadVocab() {
   }
 }
 
-// Tokenize input using vocab
 function tokenize(text, maxLen = 100) {
   const oovTokenId = vocab["<OOV>"] || 1;
   const words = text.toLowerCase().split(/\s+/);
-  const tokenIds = words
-    .map((word) => vocab[word])
-    .filter((id) => id !== undefined && id >= -10000 && id <= 9999);
 
-  const padded = new Float32Array(maxLen).fill(0);
+  const tokenIds = words.map((word) => {
+    let id = vocab[word] ?? oovTokenId;
+    return Math.max(-10000, Math.min(9999, id)); // ✅ safe clamp
+  });
+
+  const padded = new Int32Array(maxLen).fill(0);
   tokenIds.slice(0, maxLen).forEach((id, i) => (padded[i] = id));
   return padded;
 }
@@ -88,26 +89,34 @@ async function runLocalModel(text) {
   if (sentences.length === 0) return 0;
 
   let total = 0;
+  let validCount = 0;
   for (const sentence of sentences) {
-    console.log("[Content] Processing sentence:", sentence);
-    const tokenIds = tokenize(sentence);
+    try {
+      console.log("[Content] Processing sentence:", sentence);
+      const tokenIds = tokenize(sentence);
 
-    // Use Int32Array since we're working with token IDs
-    const inputData = Float32Array.from(tokenIds);
-    const inputTensor = new ort.Tensor("float32", inputData, [1, 100]);
-    const feeds = { input: inputTensor };
+      // Use Int32Array since we're working with token IDs
+      const inputData = Float32Array.from(tokenIds);
+      const inputTensor = new ort.Tensor("float32", inputData, [1, 100]);
+      const feeds = { input: inputTensor };
 
-    const results = await modelSession.run(feeds);
-    const output = results[Object.keys(results)[0]];
-    const scores = Array.from(output.data);
-    console.log("[Content] Output scores:", scores);
-    total += scores[0] || 0; // Instruction class confidence
+      const results = await modelSession.run(feeds);
+      const output = results[Object.keys(results)[0]];
+      const scores = Array.from(output.data);
+      console.log("[Content] Output scores:", scores);
+      validCount++;
+      total += scores[0] || 0; // Instruction class confidence
+    } catch (err) {
+      console.warn("[Content] Error processing sentence:", sentence);
+      console.warn(err);
+    }
   }
-  return total / sentences.length;
+  return validCount > 0 ? total / validCount : 0;
 }
 
 // Build floating UI
 function createFloatingUI(pageTitle) {
+  console.log("[Content] Creating floating UI...");
   const url = window.location.href;
   if (floatingUI && currentPageUrl === url) return floatingUI;
 
@@ -120,11 +129,7 @@ function createFloatingUI(pageTitle) {
   floatingUI = document.createElement("div");
   floatingUI.id = "instructions-floating-ui";
 
-  const shadow = floatingUI.attachShadow({ mode: "closed" });
-
-  const styles = document.createElement("style");
-  styles.textContent = `/* your style block remains unchanged */`;
-  shadow.appendChild(styles);
+  const shadow = floatingUI.attachShadow({ mode: "open" });
 
   const container = document.createElement("div");
   container.innerHTML = `
@@ -168,6 +173,10 @@ async function extractInstructions() {
     .join(" ");
 
   const shadow = createFloatingUI(pageTitle);
+  console.log("[Debug] Shadow root children:", shadow.innerHTML);
+
+  await new Promise((resolve) => requestAnimationFrame(resolve)); // 👈 give DOM time to render
+
   const loading = shadow.querySelector("#loading-indicator");
   const output = shadow.querySelector("#instructions-text");
 
