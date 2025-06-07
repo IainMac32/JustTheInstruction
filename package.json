@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.4.21",
+    "marked": "^15.0.12",
     "onnxruntime-web": "^1.22.0",
     "postcss": "^8.5.4",
     "tailwindcss": "^4.1.8"

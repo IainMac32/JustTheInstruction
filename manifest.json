@@ -12,7 +12,11 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["ort-backend/ort.wasm.min.js", "content_script.js"],
+      "js": [
+        "ort-backend/ort.wasm.min.js",
+        "ort-backend/marked.min.js",
+        "content_script.js"
+      ],
       "run_at": "document_end"
     }
   ],

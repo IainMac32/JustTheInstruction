@@ -101,3 +101,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
   }
 });
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.local.get("userId", (data) => {
+    if (!data.userId) {
+      const uuid = crypto.randomUUID();
+      chrome.storage.local.set({ userId: uuid }, () => {
+        console.log("[Extension] userId generated:", uuid);
+      });
+    }
+  });
+});

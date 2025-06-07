@@ -156,9 +156,10 @@ function createFloatingUI(pageTitle) {
           <p>Extracting instructions...</p>
         </div>
         <div id="instructions-text" class="text-black whitespace-pre-line"></div>
-        <button id="refresh-analysis" class="text-blue-600 underline hover:text-blue-800 text-sm mt-2">
-    🔄 Refresh Analysis
-  </button>
+        <button id="generate-with-gpt" class="text-blue-600 underline hover:text-blue-800 text-sm mt-2">
+          ✨ Generate with GPT
+        </button>
+
       </div>
     </div>
   `;
@@ -365,11 +366,86 @@ async function toggleFloatingUI() {
     output.innerHTML = "";
   }
 
-  const refreshBtn = shadow.querySelector("#refresh-analysis");
-  if (refreshBtn) {
-    refreshBtn.onclick = () => {
-      extractInstructions(true, true); // rerun & replace
-      toggleFloatingUI(); // re-show UI
+  const gptBtn = shadow.querySelector("#generate-with-gpt");
+  if (gptBtn) {
+    gptBtn.onclick = async () => {
+      const loading = shadow.querySelector("#loading-indicator");
+      const output = shadow.querySelector("#instructions-text");
+      const scoreLabel = shadow.querySelector("#average-score");
+
+      if (loading) loading.style.display = "flex";
+      if (output) {
+        output.style.display = "none";
+        output.innerHTML = "";
+      }
+      if (scoreLabel) scoreLabel.textContent = "Asking GPT for analysis...";
+
+      try {
+        const pageText = Array.from(
+          document.querySelectorAll("h1, h2, h3, h4, h5, p, li, td")
+        )
+          .map((el) => el.textContent.trim())
+          .filter((text) => text.length > 0)
+          .join("\n");
+
+        const { userId } = await chrome.storage.local.get("userId");
+
+        const response = await fetch(
+          "https://instructions-api-2-561360507997.us-central1.run.app/generate",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              userId,
+              prompt: `Extract instructions:\n${pageText}`,
+            }),
+          }
+        );
+
+        const data = await response.json();
+
+        if (loading) loading.style.display = "none";
+        if (output) {
+          output.style.display = "block";
+          output.innerHTML = "";
+        }
+
+        // Handle rate limit response
+        if (response.status === 429) {
+          const errorMsg = data?.error || "You’ve hit the daily GPT limit.";
+          if (output) {
+            output.innerHTML = `<p class="text-sm text-red-600 font-semibold">⚠️ ${errorMsg}</p>`;
+          }
+          if (scoreLabel) {
+            scoreLabel.textContent =
+              "⛔ Daily limit reached (3 GPT requests/day)";
+          }
+          return;
+        }
+
+        // Handle valid response
+        if (typeof data.response === "string") {
+          output.innerHTML = marked.parse(data.response);
+          if (scoreLabel) {
+            scoreLabel.textContent = `✅ GPT completed analysis`;
+          }
+        } else {
+          output.textContent = "No instructions found.";
+          if (scoreLabel) {
+            scoreLabel.textContent = `⚠️ GPT returned an empty result`;
+          }
+        }
+      } catch (err) {
+        console.error("[Content] GPT error:", err);
+        if (loading) loading.style.display = "none";
+        if (output) {
+          output.style.display = "block";
+          output.innerHTML = `<p class="text-sm text-red-600">❌ GPT analysis failed. Check the console for more info.</p>`;
+        }
+        if (scoreLabel) {
+          scoreLabel.textContent = "❌ Error calling GPT";
+        }
+      }
     };
   }
 }

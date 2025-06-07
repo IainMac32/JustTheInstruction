@@ -2328,11 +2328,6 @@ body {
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity, 1));
@@ -2341,6 +2336,11 @@ body {
 .text-red-600 {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .text-yellow-600 {
@@ -2490,6 +2490,11 @@ body {
 .grayscale {
   --tw-grayscale: grayscale(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.\!invert {
+  --tw-invert: invert(100%) !important;
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow) !important;
 }
 
 .invert {
@@ -2659,6 +2664,10 @@ body {
 
 .forced-color-adjust-none {
   forced-color-adjust: none;
+}
+
+.\[a-zA-Z\:_\] {
+  a-z-a--z: ;
 }
 
 .\[options\:IParseOptions\] {
