@@ -1,0 +1,20 @@
+{
+  "name": "justtheinstruction",
+  "version": "1.0.0",
+  "description": "Isn't it the worst when you find a recipe online, but need to scroll down for what feels like hours to find the actual instructions? We too have been bothered by this issue and began to think of a solution. What if we could use AI to extract ***JustTheInstructions*** from any recipe, arts & crafts, or other DIY website?",
+  "main": "content_script.js",
+  "scripts": {
+    "build": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "marked": "^15.0.12",
+    "onnxruntime-web": "^1.22.0",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^4.1.8"
+  }
+}

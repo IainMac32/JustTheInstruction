@@ -1,28 +1,53 @@
 {
-    "name": "Just The Instructions",
-    "manifest_version": 3,
-    "version": "1.0",
-    "description": "Filters recipe websites to just show the instructions",
-    "author": "Kristian and Iain",
-    "icons": {
-        "16": "images/cookie.png",
-        "48": "images/cookie.png",
-        "128": "images/cookie.png"
-    },
-    "content_scripts": [
-        {
-            "matches": ["*://*/*"],
-            "all_frames": true,
-            "js": ["content_script.js"],
-            "run_at": "document_end"
-        }
-    ],
-    "permissions": [
-        "activeTab"
-    ],
-    "action": {
-        "default_popup": "popup.html",
-        "default_icon": "images/cookie.png"
-
+  "name": "Just The Instructions",
+  "manifest_version": 3,
+  "version": "1.0",
+  "description": "Filters recipe websites to just show the instructions",
+  "author": "Kristian and Iain",
+  "icons": {
+    "16": "images/cookie.png",
+    "48": "images/cookie.png",
+    "128": "images/cookie.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": [
+        "ort-backend/ort.wasm.min.js",
+        "ort-backend/marked.min.js",
+        "content_script.js"
+      ],
+      "run_at": "document_end"
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "model.onnx",
+        "dist/styles.css",
+        "vocab.json",
+        "ort-backend/*",
+        "ort-backend/ort.wasm.min.js",
+        "ort-backend/ort-wasm.wasm",
+        "ort-backend/ort-wasm-simd.wasm",
+        "ort-backend/ort-wasm-simd.jsep.wasm"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "externally_connectable": {
+    "matches": ["<all_urls>"]
+  },
+  "permissions": ["activeTab", "tabs", "notifications", "storage", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "action": {
+    "default_icon": "images/cookie.png"
+  }
 }

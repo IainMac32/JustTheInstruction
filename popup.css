@@ -1,89 +1,45 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
-  }
-
-  .popup-content {
-    width: 350px;
-    height: 400px;
-  }
-
-  h1 {
-    font-size: 30px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-
-  #circle-button {
-    margin-left: 100px;
-    margin-top: 60px;
-    width: 150px;
-    height: 150px;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 0 3px 4px black; /* 10px black outline /
-    color: white; / Text color /*/
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #circle-button:hover {
-    transition: width 0.5s ease, height 0.5s ease, margin-left 0.5s ease, margin-top 0.5s ease, font-size 0.5s ease;
-    outline: none;
-    width: 170px;
-    height: 170px;
-    margin-left: 90px;
-    margin-top: 50px;
-    font-size: 25px;
-  }
-
-
-  #text-screen {
-    width: 650px;
-    height: 500px;
-    padding: 20px;         /* Add padding for inner spacing */
-    background-color: #f9f9f9; /* Light background color */
-    border-radius: 10px;   /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(43, 167, 43, 0.911); /* Subtle shadow for depth */
-    overflow-y: auto;      /* Enable scrolling if text overflows */
-    margin-top: 20px;      /* Add some margin on top for spacing */
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+  margin: 0;
+  padding: 16px;
+  width: 500px;
+  min-height: 300px;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+#text-screen {
+  width: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #8b5cf6 #f3f4f6;
+}
 
 #received-text {
-  font-size: 18px;       /* Adjust font size */
-  color: #000000;           /* Dark text color */
-  line-height: 1.5;      /* Improve readability with line height */
+  font-size: 18px; /* Adjust font size */
+  color: #000000; /* Dark text color */
+  line-height: 1.5; /* Improve readability with line height */
 }
 
-
 #back-button {
-  background-color: #4CAF50; /* Green background */
-  border: none;              /* Remove borders */
-  color: white;              /* White text */
-  padding: 10px 20px;        /* Add some padding */
-  text-align: center;        /* Center the text */
-  text-decoration: none;     /* Remove underline */
-  display: inline-block;     /* Make the button inline-block */
-  font-size: 18px;           /* Increase font size */
-  margin-top: 20px;          /* Add some space on top */
+  background-color: #4caf50; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 10px 20px; /* Add some padding */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make the button inline-block */
+  font-size: 18px; /* Increase font size */
+  margin-top: 20px; /* Add some space on top */
   margin-bottom: 20px;
-  border-radius: 5px;        /* Rounded corners */
+  border-radius: 5px; /* Rounded corners */
   transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
-
 #back-button:hover {
   background-color: #2c662f; /* Darker green on hover */
-  cursor: pointer;           /* Change cursor to pointer */
+  cursor: pointer; /* Change cursor to pointer */
 }
